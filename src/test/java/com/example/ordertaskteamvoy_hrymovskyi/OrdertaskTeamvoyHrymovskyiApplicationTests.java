@@ -8,6 +8,7 @@ class OrdertaskTeamvoyHrymovskyiApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

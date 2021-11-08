@@ -1,25 +1,43 @@
 package com.example.ordertaskteamvoy_hrymovskyi.Model;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalTime;
+import java.util.List;
+
 
 @Entity
-@Table(name = "Orders")
-@Getter
-@Setter
-@ToString
-public class Order extends BaseEntity{
-    @Column(name = "name")
-    private String name;
+@Table(name = "OrderItems")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Order {
 
-    @Column(name = "price")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_order")
+    private Long id;
+
+    private String name_order;
+
     private BigDecimal price;
 
-    @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "dateOfCreation")
+    private LocalTime dateOfCreation;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinTable(
+            name = "order_item",
+            joinColumns = {@JoinColumn(name = "id_order")},
+            inverseJoinColumns = {@JoinColumn(name = "id_item")}
+    )
+    private List<Item> items;
+
 }
