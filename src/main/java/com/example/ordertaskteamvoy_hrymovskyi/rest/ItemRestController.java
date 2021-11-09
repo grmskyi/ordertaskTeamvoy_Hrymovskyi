@@ -25,8 +25,7 @@ public class ItemRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        itemService.save(item);
-        return ResponseEntity.status(HttpStatus.CREATED).body(item);
+        return ResponseEntity.status(HttpStatus.CREATED).body(itemService.save(item));
     }
 
     //method getAllItems

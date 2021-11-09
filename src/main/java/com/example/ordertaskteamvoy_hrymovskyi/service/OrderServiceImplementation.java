@@ -18,9 +18,9 @@ public class OrderServiceImplementation implements OrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public Order save(Order order) {
+    public void save(Order order) {
         log.info("IN OrderRepoImplementation save {}", order);
-        return orderRepository.save(order);
+        orderRepository.save(order);
     }
 
     @Override

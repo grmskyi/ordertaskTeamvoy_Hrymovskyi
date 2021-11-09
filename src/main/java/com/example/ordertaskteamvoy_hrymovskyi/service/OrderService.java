@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OrderService {
 
-    Order save(Order order);
+    void save(Order order);
 
     void delete(Long id);
 
