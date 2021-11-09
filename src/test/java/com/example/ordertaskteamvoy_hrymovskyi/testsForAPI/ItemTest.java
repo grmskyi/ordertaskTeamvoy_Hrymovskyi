@@ -1,7 +1,8 @@
 package com.example.ordertaskteamvoy_hrymovskyi.testsForAPI;
-import com.example.ordertaskteamvoy_hrymovskyi.Model.Item;
-import com.example.ordertaskteamvoy_hrymovskyi.repository.ItemRepo;
-import com.example.ordertaskteamvoy_hrymovskyi.service.ItemImplementation;
+
+import com.example.ordertaskteamvoy_hrymovskyi.model.Item;
+import com.example.ordertaskteamvoy_hrymovskyi.repository.ItemRepository;
+import com.example.ordertaskteamvoy_hrymovskyi.service.ItemServiceImplementation;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,34 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class ItemTest {
 
     @InjectMocks
-    private ItemImplementation itemImplementation;
+    private ItemServiceImplementation itemServiceImplementation;
 
     @Mock
-    ItemRepo itemRepo;
+    ItemRepository itemRepository;
 
     @Test
-    public void itemGetTest(){
+    public void itemGetTest() {
         Optional<Item> exp = Optional.of(new Item(1L, "NoteBook",
-                BigDecimal.valueOf(123123.5), 4,new ArrayList<>()));
-        when(itemRepo.findById(1L)).thenReturn(exp);
-        Optional<Item> actual = itemImplementation.getById(1L);
-        Assert.assertEquals(exp,actual);
+                BigDecimal.valueOf(123123.5), 4, new ArrayList<>()));
+        when(itemRepository.findById(1L)).thenReturn(exp);
+        Optional<Item> actual = itemServiceImplementation.getById(1L);
+        Assert.assertEquals(exp, actual);
     }
 
     @Test
-    public void itemWithLowerPriceTest(){
+    public void itemWithLowerPriceTest() {
         List<Item> exp = List.of(new Item(1L, "name",
-                BigDecimal.valueOf(123.5),5, new ArrayList<>()));
-        when(itemRepo.findAllByLowestPrice("name")).thenReturn(exp);
-        List<Item> act = itemImplementation.getAllByLowestPrice("name");
-        Assert.assertEquals(exp,act);
+                BigDecimal.valueOf(123.5), 5, new ArrayList<>()));
+        when(itemRepository.findAllByLowestPrice("Phone")).thenReturn(exp);
+        List<Item> act = itemServiceImplementation.getAllByLowestPrice("Phone");
+        Assert.assertEquals(exp, act);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.example.ordertaskteamvoy_hrymovskyi.repository;
 
 
-import com.example.ordertaskteamvoy_hrymovskyi.Model.Item;
+import com.example.ordertaskteamvoy_hrymovskyi.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemRepo extends JpaRepository<Item, Long> {
+public interface ItemRepository extends JpaRepository<Item, Long> {
 
     @Query(value = "select * from item pr " +
             "where price = (select min(price) from  item )"

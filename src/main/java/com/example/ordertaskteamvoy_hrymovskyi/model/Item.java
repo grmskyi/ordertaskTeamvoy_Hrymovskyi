@@ -1,4 +1,4 @@
-package com.example.ordertaskteamvoy_hrymovskyi.Model;
+package com.example.ordertaskteamvoy_hrymovskyi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,11 +22,12 @@ public class Item {
     @Column(name = "id_item")
     private long id;
 
-    private String name_item;
+    @Column(name = "name_item")
+    private String nameItem;
 
     private BigDecimal price;
 
-    private Integer quantity;
+    private int quantity;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "items")

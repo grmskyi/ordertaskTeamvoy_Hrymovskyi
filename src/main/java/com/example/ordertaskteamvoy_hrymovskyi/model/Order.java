@@ -1,4 +1,5 @@
-package com.example.ordertaskteamvoy_hrymovskyi.Model;
+package com.example.ordertaskteamvoy_hrymovskyi.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,14 +22,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order")
     private Long id;
-
-    private String name_order;
+    @Column(name = "name_order")
+    private String nameOrder;
 
     private BigDecimal price;
 
-    private Integer quantity;
+    private int quantity;
 
-    @Column(name = "dateOfCreation")
     private LocalTime dateOfCreation;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

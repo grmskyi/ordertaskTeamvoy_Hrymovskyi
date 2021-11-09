@@ -1,15 +1,14 @@
 package com.example.ordertaskteamvoy_hrymovskyi.service;
 
 
-import com.example.ordertaskteamvoy_hrymovskyi.Model.Item;
-
+import com.example.ordertaskteamvoy_hrymovskyi.model.Item;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ItemService {
 
-    void save(Item item);
+    Item save(Item item);
 
     List<Item> getAllItem();
 
@@ -20,7 +19,6 @@ public interface ItemService {
     List<Item> getAllByMaxPrice();
 
     List<Item> getAllByLowestPrice(String name_item);
-
 
 
 }
